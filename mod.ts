@@ -1,4 +1,4 @@
-import type { Collection, Filter, ObjectId } from "./deps.ts";
+import type { Collection, Document, Filter, ObjectId } from "./deps.ts";
 
 export type PaginateFilter<T> = Omit<Filter<T>, "_id">;
 
@@ -11,6 +11,7 @@ export interface PaginateOptions<T> {
   collection: Collection<T>;
   filter: PaginateFilter<T>;
   limit: number;
+  projection?: Document;
   cursor?: ObjectId;
   order?: SortOrder;
 }
@@ -33,8 +34,9 @@ export function paginate<T>(options: PaginateOptions<T>) {
       : { $lt: options.cursor };
   }
 
-  return options.collection.find(
-    filter,
-    { limit: options.limit, sort: { _id: order } },
-  );
+  return options.collection.find(filter, {
+    limit: options.limit,
+    projection: options.projection,
+    sort: { _id: order },
+  });
 }
