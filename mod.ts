@@ -1,4 +1,10 @@
-import type { Collection, Document, Filter, ObjectId } from "./deps.ts";
+import type {
+  Collection,
+  Document,
+  Filter,
+  FindCursor,
+  ObjectId,
+} from "./deps.ts";
 
 export type PaginateFilter<T> = Omit<Filter<T>, "_id">;
 
@@ -20,7 +26,7 @@ export type CursorFilter<T> = PaginateFilter<T> & {
   _id?: { $gt: ObjectId } | { $lt: ObjectId };
 };
 
-export function paginate<T>(options: PaginateOptions<T>) {
+export function paginate<T>(options: PaginateOptions<T>): FindCursor<T> {
   if (options.limit <= 0) {
     throw new Error("Limit must be greater than 0");
   }
