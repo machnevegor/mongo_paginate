@@ -41,7 +41,7 @@ Import the paginate function to create a
 [FindCursor](https://deno.land/x/mongo@v0.31.1/src/collection/commands/find.ts?source#L13).
 
 ```ts
-import { paginate } from "https://deno.land/x/mongo_paginate@0.1.0/mod.ts";
+import { paginate } from "https://deno.land/x/mongo_paginate@0.2.0/mod.ts";
 
 const cursor = paginate({
   collection,
@@ -73,7 +73,7 @@ const nextTodos = await nextCursor.toArray();
 You can also specify the projection or sort order for a better experience.
 
 ```ts
-import { SortOrder } from "https://deno.land/x/mongo_paginate@0.1.0/mod.ts";
+import { SortOrder } from "https://deno.land/x/mongo_paginate@0.2.0/mod.ts";
 
 const cursor = paginate({
   collection,
