@@ -4,6 +4,7 @@ Imagine that we need to display a list of uncompleted ToDo's on a website.
 
 ```ts
 import { MongoClient } from "https://deno.land/x/mongo@v0.31.1/mod.ts";
+import type { ObjectId } from "https://deno.land/x/mongo@v0.31.1/mod.ts";
 
 const client = new MongoClient();
 await client.connect(/* your connection uri */);
@@ -31,8 +32,8 @@ Obviously, it is unprofitable to search for all ToDo's:
 
 ## Solution
 
-Why not send in portions of found todo as needed? That's exactly what this
-module provides.
+Why not send portions of found ToDo's as needed? That's exactly what this module
+does.
 
 ## Usage
 
