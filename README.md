@@ -68,6 +68,8 @@ const nextCursor = paginate({
 const nextTodos = await nextCursor.toArray();
 ```
 
+## Features
+
 You can also specify the projection or sort order for a better experience.
 
 ```ts
