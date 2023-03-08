@@ -18,6 +18,7 @@ export interface PaginateOptions<T> {
   filter: PaginateFilter<T>;
   limit: number;
   projection?: Document;
+  sort?: Document;
   cursor?: ObjectId;
   order?: SortOrder;
 }
@@ -43,6 +44,6 @@ export function paginate<T>(options: PaginateOptions<T>): FindCursor<T> {
   return options.collection.find(filter, {
     limit: options.limit,
     projection: options.projection,
-    sort: { _id: order },
+    sort: { ...options.sort, _id: order },
   });
 }
